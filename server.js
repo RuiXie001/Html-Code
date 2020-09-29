@@ -103,22 +103,22 @@ app.post('/signup', (req, res) => {
     //////////////
     //const list_id="aea2600ba4"
     //const apikey="f77a3d2b93d0668217f02b01616847be-us2"
-    const data = {
-        members: [{
-            email_address: email,
-            status: "subscribed",
-            merge_fields: {
-                FNAME: firstname,
-                LNAME: lastname
-            }
-        }]
-    }
-    jsonData = JSON.stringify(data)
-    const url = "https://us17.api.mailchimp.com/3.0/lists/aea2600ba4"
-    const options = {
-        method: "POST",
-        auth: "azi:f77a3d2b93d0668217f02b01616847be-us2"
-    }
+    // const data = {
+    //     members: [{
+    //         email_address: email,
+    //         status: "subscribed",
+    //         merge_fields: {
+    //             FNAME: firstname,
+    //             LNAME: lastname
+    //         }
+    //     }]
+    // }
+    // jsonData = JSON.stringify(data)
+    // const url = "https://us17.api.mailchimp.com/3.0/lists/aea2600ba4"
+    // const options = {
+    //     method: "POST",
+    //     auth: "azi:f77a3d2b93d0668217f02b01616847be-us2"
+    // }
 
     const request = https.request(url, options, (response) => {
         response.on("data", (data) => {
