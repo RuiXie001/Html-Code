@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -8,8 +7,11 @@
 	<link rel="stylesheet" href="css/milk.css">
 	<link src="http://libs.baidu.com/jquery/1.9.0/jquery.js">
 	<link type="text/javascript" src="/jssource/jquery-3.5.0.min.js">
-	<!-- <script type="text/javascript" src="/jssource/jquery.js"></script> -->
 	<link type="text/javascript" src="/jssource/jquery.mockjax.js">
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"> </script>
+	<script type="text/javascript" src="/jssource/jquery-3.5.0.min.js"> </script>
+	<script type="text/javascript" src="/jssource/jquery.mockjax.js"> </script>
+
 	<!-- 
 	<script src="Reources/jssource/jquery-3.5.0.min.js"></script>
 	<script src="Reources/jssource/jquery.js"></script>
@@ -38,7 +40,9 @@
 						<ul>
 							<li id="signupcurrent"><a href="index.html">Create Account</a>
 							</li>
-							<li id="signupcurrent"><a href=" " ><font size="3px">Log In</font></a>
+							<li id="signupcurrent"><a href=" ">
+									<font size="3px">Log In</font>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -92,11 +96,11 @@
 
 								<tr>
 									<td class="label">&nbsp;</td>
-									</tr>
+								</tr>
 								<tr>
 									<td class="label">
 										<div class="btn">
-											<button type="submit"  onclick="Submit()"> Log in </button>
+											<button type="submit" onclick="Submit()"> Log in </button>
 										</div>
 									</td>
 
@@ -113,38 +117,34 @@
 
 
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"> </script>
-<script type="text/javascript" src="/jssource/jquery-3.5.0.min.js"> </script>
-<script type="text/javascript" src="/jssource/jquery.mockjax.js"> </script>
 
 
 <script type="text/javascript">
-	$(document).ready(function(){
-	var email = localStorage.getItem("email");
-	  var password = localStorage.getItem("password");
-	  $("#email").val(email)
-	  $("#password").val(password)
-	  if (email != '' && password != '') {
-		  $("input[type=checkbox]").prop('checked', true)
-		 
-	  }
+	$(document).ready(function () {
+		var email = localStorage.getItem("email");
+		var password = localStorage.getItem("password");
+		$("#email").val(email)
+		$("#password").val(password)
+		if (email != '' && password != '') {
+			$("input[type=checkbox]").prop('checked', true)
+
+		}
 	});
-	  function Submit(event) {
-		  if ($("input[type=checkbox]").prop('checked')) {
-			  localStorage.setItem("email", $("#email").val())
-			  localStorage.setItem("password", $("#password").val())
-		  } else {
-			  localStorage.setItem("email", '')
-			  localStorage.setItem("password", '')
-		  }
-		 
-	  }
-  
-  
-  </script>
+	function Submit(event) {
+		if ($("input[type=checkbox]").prop('checked')) {
+			localStorage.setItem("email", $("#email").val())
+			localStorage.setItem("password", $("#password").val())
+		} else {
+			localStorage.setItem("email", '')
+			localStorage.setItem("password", '')
+		}
+
+	}
+
+
+</script>
 
 
 
 
 </html>
-
