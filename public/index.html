@@ -4,6 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fir=no">
+	<meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id"
+		content="661834348610-bk18lequdc5j55fv1qavbe1611a7452k.apps.googleusercontent.com">
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+
 	<title>Create Account page</title>
 	<link rel="stylesheet" type="text/css" href="css/milk.css">
 	<!-- <script src='./jssourse/jquery.js'></script>
@@ -30,9 +36,13 @@
 				<div id="signupbox">
 					<div id="signuptab">
 						<ul>
-							<li id="signupcurrent"><a href=" " ><font size="3px">Create Account</font></a>
+							<li id="signupcurrent"><a href=" ">
+									<font size="3px">Create Account</font>
+								</a>
 							</li>
-							<li id="signupcurrent"><a href="login.html" ><font>Log In</font></a>
+							<li id="signupcurrent"><a href="login.html">
+									<font>Log In</font>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -167,10 +177,6 @@
 
 
 
-
-
-
-
 								<tr>
 									<td class="label">&nbsp;</td>
 									<td class="field" colspan="2">
@@ -188,8 +194,12 @@
 										<label id="lsignupsubmit" for="signupsubmit">Log in</label>
 									</td>
 									<td class="field">Already had an account? Click<a href="./login.html"> Here </a>to
-										log in</td>
+										log in
+									</td>
 								</tr>
+
+
+
 								<tr>
 									<td class="label">
 										<label id="lsignupsubmit" for="signupsubmit">Create Account</label>
@@ -198,12 +208,27 @@
 										<button name="submit" type="submit">Create My Account</button>
 									</td>
 								</tr>
+
+								<tr>
+									<td class="label">
+										<label id="google" for="google">Sign in with Google</label>
+									</td>
+									<td class="field" colspan="2">
+										<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+									</td>
+								</tr>
+
+
 							</table>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+
 	</div>
 
 
@@ -214,3 +239,48 @@
 
 
 </html>
+
+<script>
+	function onSignIn(googleUser) {
+		gapi.load('auth2', function () {
+		gapi.auth2.init();
+	})
+		// Useful data for your client-side scripts:
+
+		var profile = googleUser.getBasicProfile();
+
+		console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+
+		console.log('Full Name: ' + profile.getName());
+
+		console.log('Given Name: ' + profile.getGivenName());
+
+		console.log('Family Name: ' + profile.getFamilyName());
+
+		console.log("Image URL: " + profile.getImageUrl());
+
+		console.log("Email: " + profile.getEmail());
+
+
+
+		// The ID token you need to pass to your backend:
+
+		var id_token = googleUser.getAuthResponse().id_token;
+
+		console.log("ID Token: " + id_token);
+
+	};
+
+	function signOut() {
+
+		var auth2 = gapi.auth2.getAuthInstance();
+
+		auth2.signOut().then(function () {
+
+			alert('SignOut!');
+
+		});
+
+	}
+
+</script>

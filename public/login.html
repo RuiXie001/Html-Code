@@ -6,7 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fir=no">
 	<title>Login Page</title>
 	<link rel="stylesheet" href="css/milk.css">
-
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<script type="text/javascript" src="./jssource/jquery-3.5.0.min.js"></script>
+	<script type="text/javascript" src="./jssource/jquery.js"></script>
+	<script type="text/javascript" src="./jssource/jquery.mockjax.js"></script>
 	<!-- 
 	<script src="Reources/jssource/jquery-3.5.0.min.js"></script>
 	<script src="Reources/jssource/jquery.js"></script>
@@ -64,22 +67,36 @@
 									<td class="status"></td>
 								</tr>
 
+								<tr>
+									<td class="label">
+									</td>
+									<td class="field">
+									</td>
+								</tr>
+
+								<tr>
+									<td class="label">Rmember me
+									</td>
+									<td class="field"><input type="checkbox" class="remember" checked><br /><br />
+									</td>
+								</tr>
+
+
+								<tr>
+									<td class="label">
+									</td>
+									<td class="field">Forgot the password? Click<a href="./forgotP.html"> Here </a>to
+										send a reset email
+									</td>
+								</tr>
 
 								<tr>
 									<td class="label">&nbsp;</td>
-									<!-- <td class="field" colspan="2">
-										<div id="termswrap">
-											<input id="terms" type="checkbox" name="terms">
-											<label id="lterms" for="terms">Save the password</label>
-										</div>
-									
-
-									</td> -->
-								</tr>
+									</tr>
 								<tr>
 									<td class="label">
 										<div class="btn">
-											<button type="submit"> Log in </button>
+											<button type="submit"  onclick="Submit()"> Log in </button>
 										</div>
 									</td>
 
@@ -99,3 +116,27 @@
 
 
 </html>
+
+<script>
+	var email = localStorage.getItem("email");
+	  var password = localStorage.getItem("password");
+	  $("#email").val(email)
+	  $("#password").val(password)
+	  if (email != '' && password != '') {
+		  $("input[type=checkbox]").prop('checked', true)
+		 
+	  }
+  
+	  function Submit(event) {
+		  if ($("input[type=checkbox]").prop('checked')) {
+			  localStorage.setItem("email", $("#email").val())
+			  localStorage.setItem("password", $("#password").val())
+		  } else {
+			  localStorage.setItem("email", '')
+			  localStorage.setItem("password", '')
+		  }
+		 
+	  }
+  
+  
+  </script>

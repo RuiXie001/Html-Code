@@ -1,0 +1,52 @@
+<!-- <html>
+
+<head>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="./public/jssource/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript" src="./public/jssource/jquery.js"></script>
+    <script type="text/javascript" src="./public/jssource/jquery.mockjax.js"></script>
+
+
+</head>
+
+
+<body>
+    <div>
+        <h3>Log in</h3>
+        <input type="text" name="email" placeholder="user" id="email" class="idText">
+        <input type="password" name="password" id="password" placeholder="password">
+        <input type="checkbox" class="remember" checked><br /><br />
+        <input type="button" value="登录" id="sub" onclick="Submit()">
+    </div>
+
+
+</body>
+
+
+</html>
+
+
+<script>
+
+    var email = localStorage.getItem("email");
+    var password = localStorage.getItem("password");
+    $("#email").val(email)
+    $("#password").val(password)
+    if (email != '' && password != '') {
+        $("input[type=checkbox]").prop('checked', true)
+
+    }
+
+    function Submit(event) {
+        if ($("input[type=checkbox]").prop('checked')) {
+            localStorage.setItem("email", $("#email").val())
+            localStorage.setItem("password", $("#password").val())
+        } else {
+            localStorage.setItem("email", '')
+            localStorage.setItem("password", '')
+        }
+
+    }
+
+
+</script> -->
