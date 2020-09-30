@@ -12,7 +12,7 @@
 	} else {
 		factory( jQuery );
 	}
-}(function( $ ) {
+}(function($) {
 
 $.extend($.fn, {
 	// http://jqueryvalidation.org/validate/

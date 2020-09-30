@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fir=no">
 	<title>Login Page</title>
 	<link rel="stylesheet" href="css/milk.css">
-	<link src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-	<link type="text/javascript" src="./jssource/jquery-3.5.0.min.js"></script>
-	<!-- <script type="text/javascript" src="./jssource/jquery.js"></script> -->
-	<link type="text/javascript" src="./jssource/jquery.mockjax.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<script type="text/javascript" src="/jssource/jquery-3.5.0.min.js"></script>
+	<script type="text/javascript" src="/jssource/jquery.js"></script>
+	<script type="text/javascript" src="/jssource/jquery.mockjax.js"></script>
 	<!-- 
 	<script src="Reources/jssource/jquery-3.5.0.min.js"></script>
 	<script src="Reources/jssource/jquery.js"></script>
@@ -115,9 +115,9 @@
 </body>
 
 
-</html>
 
-<script>
+<script type="text/javascript">
+	$(document).ready(function(){
 	var email = localStorage.getItem("email");
 	  var password = localStorage.getItem("password");
 	  $("#email").val(email)
@@ -126,7 +126,7 @@
 		  $("input[type=checkbox]").prop('checked', true)
 		 
 	  }
-  
+	});
 	  function Submit(event) {
 		  if ($("input[type=checkbox]").prop('checked')) {
 			  localStorage.setItem("email", $("#email").val())
@@ -140,3 +140,6 @@
   
   
   </script>
+
+</html>
+
