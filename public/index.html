@@ -7,7 +7,7 @@
 	<meta name="google-signin-scope" content="profile email">
 	<meta name="google-signin-client_id"
 		content="661834348610-bk18lequdc5j55fv1qavbe1611a7452k.apps.googleusercontent.com">
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://apis.google.com/js/api.js"></script>
 
 	<title>Create Account page</title>
@@ -243,8 +243,8 @@
 <script>
 	function onSignIn(googleUser) {
 		gapi.load('auth2', function () {
-		gapi.auth2.init();
-	})
+			gapi.auth2.init();
+		})
 		// Useful data for your client-side scripts:
 
 		var profile = googleUser.getBasicProfile();

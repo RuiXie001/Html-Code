@@ -141,9 +141,9 @@ mongoose.connect("mongodb://localhost:27017/task", {
   useUnifiedTopology: true,
 });
 var db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
+//db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
-  console.log("we are connected!");
+  //console.log("we are connected!");
 });
 
 ////////////////////////////////
@@ -326,12 +326,12 @@ app.post("/signup", (req, res) => {
       ) {
         alert("Your phone number is not valid!");
       } else {
-        console.log(Error);
+       // console.log(Error);
         alert("Error...");
       }
     } else {
-      console.log(newNote);
-      console.log("Success!!!");
+    //  console.log(newNote);
+     // console.log("Success!!!");
       res.redirect("/success_signup");
     }
   });
@@ -382,7 +382,7 @@ app.get("/forgotP", (req, res) => {
 
 app.post("/forgotP", (req, res) => {
   const email = req.body.email;
-  console.log("Success send reset mail!!!");
+ // console.log("Success send reset mail!!!");
   res.redirect("/success_send");
   const transporter = nodemailer.createTransport({
     service: "qq",
@@ -438,17 +438,17 @@ app.post("/changeP", (req, res) => {
     { useNewUrlParser: true, useUnifiedTopology: true },
     function (err, db) {
       if (err) throw err;
-      console.log("e 1");
+     // console.log("e 1");
       var dbo = db.db("task");
-      console.log("e 2");
+     // console.log("e 2");
       dbo
         .collection("notes")
         .find({ email: req.body.email })
         .toArray(function (err0, result) {
           if (err0) throw err0;
-          console.log("e 3!");
+        //  console.log("e 3!");
           if (result[0]["email"] == req.body.email) {
-            console.log("e 4");
+         //   console.log("e 4");
             dbo.collection("notes").updateOne(
               { email: req.body.email },
               {
@@ -459,12 +459,12 @@ app.post("/changeP", (req, res) => {
               },
               function (err, res2) {
                 if (err) throw err;
-                console.log("update success");
+              //  console.log("update success");
                 res.redirect("/success_change");
               }
             );
           } else {
-            console.log("Didn't find the email..." + result[0]["email"] + "!");
+          //  console.log("Didn't find the email..." + result[0]["email"] + "!");
           }
         });
     }
