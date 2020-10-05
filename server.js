@@ -10,9 +10,8 @@ const https = require("https");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const usersRouter = require("./users");
-var Session = require('express-session');
-var google = require('googleapis');
-
+var Session = require("express-session");
+var google = require("googleapis");
 
 const NEWNOTE = new mongoose.Schema({
   ///////
@@ -156,12 +155,13 @@ app.use(
 );
 app.use("/users", usersRouter);
 
-app.use(Session({
-  secret: 'sBT7S0bPL2PayiOgJXjd_IqJ',
-  resave: true,
-  saveUninitialized: true
-}));
-
+app.use(
+  Session({
+    secret: "sBT7S0bPL2PayiOgJXjd_IqJ",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.redirect("/index.html");
@@ -353,17 +353,16 @@ app.post("/login", function (req, res) {
     {
       email: email,
     },
-    function (error, ress) {
-      if (ress == null) {
-        alert("Incorrect E-mail address!");
-      } else {
-        const result = bcrypt.compareSync(password, ress.password);
-        if (result == null) {
-          alert("Incorrect password!");
-        } else {
-          console.log("Log in Successfully!");
+    function (error, doc) {
+      if (doc) {
+        if (password == doc.password) {
           res.redirect("/success_login");
+        } else {
+          alert("Wrong password!");
         }
+      } else {
+        alert("Invalid email address!");
+        // res.send("Invalid email address!")
       }
     }
   );
@@ -444,19 +443,18 @@ app.post("/changeP", (req, res) => {
       console.log("e 2");
       dbo
         .collection("notes")
-        .find({ "email": req.body.email })
-        .toArray(function (err0,result) {
+        .find({ email: req.body.email })
+        .toArray(function (err0, result) {
           if (err0) throw err0;
           console.log("e 3!");
           if (result[0]["email"] == req.body.email) {
-
             console.log("e 4");
             dbo.collection("notes").updateOne(
-              { "email": req.body.email },
+              { email: req.body.email },
               {
                 $set: {
-                  "password": req.body.newpassword,
-                  "Con_password": req.body.newpassword,
+                  password: req.body.newpassword,
+                  Con_password: req.body.newpassword,
                 },
               },
               function (err, res2) {
@@ -465,11 +463,8 @@ app.post("/changeP", (req, res) => {
                 res.redirect("/success_change");
               }
             );
-
-            
-          }
-          else{
-            console.log("Didn't find the email..."+result[0]["email"]+"!");
+          } else {
+            console.log("Didn't find the email..." + result[0]["email"] + "!");
           }
         });
     }
@@ -511,9 +506,6 @@ app.get("/success_change", (req, res) => {
 app.get("/success_google", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/success_google.html"));
 });
-
-
-
 
 let port = process.env.PORT;
 if (port == null || port == "") {
