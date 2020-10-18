@@ -44,6 +44,8 @@
 									<font>Log In</font>
 								</a>
 							</li>
+							<li id="signupcurrent"><a href="Game.html">Web Game</a>
+							</li>
 						</ul>
 					</div>
 					<div id="signupwrap">
@@ -70,6 +72,10 @@
 										</select>
 									</td>
 									<td class="status"></td>
+								</tr>
+								<tr>
+									<div id="Images"><img id="IMG" src="./images/Autumn.gif" width="600px"
+											onClick=ChangeImgs() /></div>
 								</tr>
 
 								<tr>
@@ -241,6 +247,35 @@
 </html>
 
 <script>
+
+	function ChangeImgs() {
+
+		var img = document.getElementById('IMG');
+		var num = Math.ceil(Math.random()*11); 
+		if (num == 1)
+			img.src = './images/sakura.gif';
+		else if (num == 2)
+			img.src = './images/Autumn.gif';
+		else if (num == 3)
+			img.src = './images/blade.jpeg';
+		else if (num == 4)
+			img.src = './images/field.jpg';
+		else if (num == 5)
+			img.src = './images/green.jpg';
+		else if (num == 6)
+			img.src = './images/miao.jpg';
+		else if (num == 7)
+			img.src = './images/nature.jpg';
+		else if (num == 8)
+			img.src = './images/sekiro.jpg';
+		else if (num == 9)
+			img.src = './images/sekiro2.jpg';
+		else if (num == 10)
+			img.src = './images/sound.gif';
+		else if (num == 11)
+			img.src = './images/spring.jpg';
+	}
+
 	function onSignIn(googleUser) {
 		gapi.load('auth2', function () {
 			gapi.auth2.init();
@@ -249,17 +284,17 @@
 
 		var profile = googleUser.getBasicProfile();
 
-		console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+		//	console.log("ID: " + profile.getId()); // Don't send this directly to your server!
 
-		console.log('Full Name: ' + profile.getName());
+		//	console.log('Full Name: ' + profile.getName());
 
-		console.log('Given Name: ' + profile.getGivenName());
+		//	console.log('Given Name: ' + profile.getGivenName());
 
-		console.log('Family Name: ' + profile.getFamilyName());
+		//	console.log('Family Name: ' + profile.getFamilyName());
 
-		console.log("Image URL: " + profile.getImageUrl());
+		//console.log("Image URL: " + profile.getImageUrl());
 
-		console.log("Email: " + profile.getEmail());
+		//console.log("Email: " + profile.getEmail());
 
 
 
@@ -267,7 +302,7 @@
 
 		var id_token = googleUser.getAuthResponse().id_token;
 
-		console.log("ID Token: " + id_token);
+		//console.log("ID Token: " + id_token);
 
 	};
 
